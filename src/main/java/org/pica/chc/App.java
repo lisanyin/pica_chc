@@ -35,7 +35,7 @@ import org.pica.chc.enums.SiYuanFont;
 
 public class App {
 
-    private static final String SY_FONT_PREFIX = "C:\\\\Users\\\\Pica\\\\Desktop\\\\pica\\\\SourceHanSerifCN\\\\";
+    private static final String SY_FONT_PREFIX = "C:\\Users\\Pica\\Desktop\\pica\\SourceHanSerifCN\\";
 
     /**
      * 读取excel附件数据并且将根据图片模板渲染数据
@@ -570,29 +570,15 @@ public class App {
                 break;
         }
         if (cusfont == null) {
-            InputStream is = null;
-            BufferedInputStream bis = null;
+            /**
+             * 这中方式不会产生.tmp临时文件，防止磁盘溢出
+             */
+            File fontFile = new File(fontUrl);
             try {
-                is = new FileInputStream(new File(fontUrl));
-                bis = new BufferedInputStream(is);
-                cusfont = Font.createFont(Font.TRUETYPE_FONT, is);
-                // 设置字体大小，float型
+                cusfont = Font.createFont(Font.TRUETYPE_FONT, fontFile);
                 cusfont = cusfont.deriveFont(fontsize);
-            } catch (FontFormatException e) {
+            } catch (Exception e) {
                 e.printStackTrace();
-            } catch (IOException e) {
-                e.printStackTrace();
-            } finally {
-                try {
-                    if (null != bis) {
-                        bis.close();
-                    }
-                    if (null != is) {
-                        is.close();
-                    }
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
             }
         }
         return cusfont;
