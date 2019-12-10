@@ -417,7 +417,7 @@ public class App {
         // 将字符串将字符串拆分为汉字、数字、符号组成的List集合
         List<String> splitCol = split(source);
         // 每行渲染的数据集合
-        List<String> rowCol = new ArrayList<>();
+        List<String> rowCol = new ArrayList<String>();
         StringBuilder rowc = new StringBuilder();
         int rowLength = 0;
         for (int i = 0; i < splitCol.size(); i++) {
@@ -505,7 +505,7 @@ public class App {
      * @return
      */
     public static List<String> split(String source) {
-        List<String> charsList = new ArrayList<>(source.length());
+        List<String> charsList = new ArrayList<String>(source.length());
         char[] strChars = source.toCharArray();
         String append = "";
         for (char ele : strChars) {
@@ -604,7 +604,7 @@ public class App {
      * @return
      */
     public static int getNum(String source, NumberBit nuberBit) {
-        Map<String, Integer> numResult = new HashMap<>();
+        Map<String, Integer> numResult = new HashMap<String, Integer>();
         // 个位数个数
         int num1 = 0;
         // 十位数个数

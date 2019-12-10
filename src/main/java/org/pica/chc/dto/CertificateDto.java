@@ -1,29 +1,24 @@
 package org.pica.chc.dto;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
-
 public class CertificateDto {
 
-	// Ã¿ĞĞÏÔÊ¾µÄ×Ö·û¸öÊı´óĞ¡
+	// æ¯è¡Œæ˜¾ç¤ºçš„å­—ç¬¦ä¸ªæ•°å¤§å°
 	private static final int ROW_CHARACTER_SIZE = 16;
-	// ÓÃ»§id
+	// ç”¨æˆ·id
 	private String id;
-	// Ö¤ÊéÓÃ»§ĞÕÃû
+	// è¯ä¹¦ç”¨æˆ·å§“å
 	private String username;
-	// Ò½Ôº
+	// åŒ»é™¢
 	private String hospital;
-	// ·ÖÇøÃû³Æ
+	// åˆ†åŒºåç§°
 	private String zonename;
-	// È«¹úÅÅÃû
+	// å…¨å›½æ’å
 	private String allposi;
-	// ·ÖÇøÅÅÃû
+	// åˆ†åŒºæ’å
 	private String zoneposi;
-	// Ö¤Êé±àºÅ
+	// è¯ä¹¦ç¼–å·
 	private String serial;
-	//½±ÏîµÈ¼¶
+	//å¥–é¡¹ç­‰çº§
 	private String level;
 
 	public String getId() {
@@ -82,8 +77,8 @@ public class CertificateDto {
 		this.serial = serial;
 	}
 
-	
-	
+
+
 	public String getLevel() {
 		return level;
 	}
@@ -94,9 +89,9 @@ public class CertificateDto {
 
 	@Override
 	public String toString() {
-		//@Óë#×÷Îª¸¨Öú·ûºÅ
-		return "  " + hospital + " @" + username + "# ÔÚ2019Äê¹ú¼Ò»ù²ã¸ßÑªÑ¹·ÀÖÎ¹ÜÀíÖªÊ¶¾ºÈüÖĞ£¬ÈÙ»ñ"+level+"£¨È«¹úµÚ" + allposi + "Ãû£¬"
-				+ zonename + "µØÇøµÚ" + zoneposi + "Ãû£©£¬ÌØ´Ë±íÕÃ¡£";
+		//@ä¸#ä½œä¸ºè¾…åŠ©ç¬¦å·
+		return "  " + hospital + " @" + username + "# åœ¨2019å¹´å›½å®¶åŸºå±‚é«˜è¡€å‹é˜²æ²»ç®¡ç†çŸ¥è¯†ç«èµ›ä¸­ï¼Œè£è·"+level+"ï¼ˆå…¨å›½ç¬¬" + allposi + "åï¼Œ"
+				+ zonename + "åœ°åŒºç¬¬" + zoneposi + "åï¼‰ï¼Œç‰¹æ­¤è¡¨å½°ã€‚";
 	}
 
 }
