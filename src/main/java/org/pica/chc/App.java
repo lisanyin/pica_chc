@@ -31,6 +31,7 @@ import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import org.pica.chc.dto.CertificateDto;
 import org.pica.chc.enums.NumberBit;
+import org.pica.chc.enums.SiYuanFont;
 
 public class App {
 
@@ -123,7 +124,7 @@ public class App {
                 + ".jpg"; // 待存储的地址
         String p = certificateInfo.toString();
         String render = p;
-        Font font = getDefinedFont(3, 36);
+        Font font = getDefinedFont(SiYuanFont.HEAVY, 36);
         // 水印图片色彩以及透明度
         Color color = new Color(77, 48, 21, 255);
 
@@ -147,13 +148,13 @@ public class App {
                                 charSpace, rowSpace, lastPos, isExtend);
                     } else {
                         srcImgPath = tarImgPath;
-                        font = getDefinedFont(1, 33);
+                        font = getDefinedFont(SiYuanFont.BOLD, 33);
                         imageHandle(tarImgPath, tarImgPath, specRow[i], color, font, row, true, specRow[0].length(),
                                 false, charSpace, rowSpace, lastPos, isExtend);
                     }
                 }
                 srcImgPath = tarImgPath;
-                font = getDefinedFont(1, 33);
+                font = getDefinedFont(SiYuanFont.BOLD, 33);
             } else {
                 imageHandle(srcImgPath, tarImgPath, renderEle, color, font, row, false, 0, false, charSpace, rowSpace,
                         lastPos, isExtend);
@@ -162,7 +163,7 @@ public class App {
         }
         isExtend = true;
 
-        font = getDefinedFont(5, 18);
+        font = getDefinedFont(SiYuanFont.MEDIUM, 18);
         // 渲染证书编码
         imageHandle(tarImgPath, tarImgPath, "编号 " + certificateInfo.getSerial(), color, font, -1, false, 0, true, 1, 1,
                 lastPos, isExtend);
@@ -479,7 +480,7 @@ public class App {
     }
 
     /**
-     * 1 计算方法com.sample.app.AppBup.split(String)方法中每个元素的长度
+     * split(String)方法中每个元素的长度
      *
      * @param ele
      * @param cur
@@ -536,14 +537,14 @@ public class App {
     /**
      * 1思源自定义字体
      *
-     * @param ft       字体类型
+     * @param siYuanFont       字体类型
      * @param fontsize 字体大小
      * @return
      */
-    public static Font getDefinedFont(int ft, float fontsize) {
+    public static Font getDefinedFont(SiYuanFont siYuanFont, float fontsize) {
         Font cusfont = null;
         String fontUrl = "";
-        switch (ft) {
+        switch (siYuanFont.code()) {
             case 1:
                 fontUrl = SY_FONT_PREFIX + "SourceHanSerifCN-Bold.otf";// 思源 粗体
                 break;
@@ -603,7 +604,7 @@ public class App {
      * @param source
      * @return
      */
-    public static int getNum(String source, NumberBit nuberBit) {
+    public static int getNum(String source, NumberBit numberBit) {
         Map<String, Integer> numResult = new HashMap<String, Integer>();
         // 个位数个数
         int num1 = 0;
@@ -632,7 +633,7 @@ public class App {
         numResult.put(NumberBit.NUM2.getCode(), num2);
         numResult.put(NumberBit.NUM3.getCode(), num3);
         numResult.put(NumberBit.NUM4.getCode(), num4);
-        return numResult.get(nuberBit.getCode());
+        return numResult.get(numberBit.getCode());
     }
 
     public static void main(String[] args) {
